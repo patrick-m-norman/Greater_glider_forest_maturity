@@ -1,0 +1,24 @@
+{
+    "pipeline": [
+        {
+            "type":"readers.las"
+        },
+        {
+            "type":"filters.smrf",
+            "window":20,
+            "cell":1.0
+        },
+        {
+            "type":"filters.range",
+            "limits":"Classification[2:2]"
+        },
+        {
+            "type":"writers.gdal",
+            "output_type":"mean",
+            "gdaldriver":"GTiff",
+            "window_size":20,
+            "override_srs":"EPSG:28356",
+            "resolution":1.0
+        }
+    ]
+}
